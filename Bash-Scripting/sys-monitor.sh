@@ -50,6 +50,12 @@ echo "Disk Used: ${disk_used} MiB"
 echo "Disk Free: ${disk_free} MiB (${disk_usage_perc})"
 echo
 
+# Network & IP Address Info
+echo ">> Network Info <<"
+network_info=$(ip -br addr sh | awk '{print $1, $3}')
+printf "%s\n" $network_info
+echo
+
 # Top 5 Processes by CPU Usage
 echo ">> Top 5 Processes by CPU Usage <<"
 top_cpu=$(top -bn1 | awk '/^[[:space:]]*[0-9]+/ {print $12; if (++count >= 5) exit}')
