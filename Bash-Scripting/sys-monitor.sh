@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo "===== SYSTEM MONITORING REPORT ====="
 echo
