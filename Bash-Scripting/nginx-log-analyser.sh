@@ -44,3 +44,17 @@ else
         echo "$((i/2+1)). ${results[i+1]} - ${results[i]} requests"
     done
 fi
+
+echo
+echo "Top 5 user agents with the most requests:"
+user_agent_results=$(awk -F'"' '{if ($6 != "" && $6 != "-") print $6}' "$LOG_FILE" | sort | uniq -c | sort -nr | head -n 5)
+
+if [ -z "$user_agent_results" ]; then
+    echo "No valid user agents found in $LOG_FILE"
+else
+    echo "$user_agent_results" | while read count ua_string; do
+        current_rank=$((current_rank + 1))
+        echo "$current_rank. $ua_string - $count requests"
+    done
+fi
+
