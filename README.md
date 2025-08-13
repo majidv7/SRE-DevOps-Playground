@@ -1,2 +1,2 @@
-# DevOps-Playground
+# SRE-DevOps-Playground
 
